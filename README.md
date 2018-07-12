@@ -5,3 +5,6 @@ The data is stored in data_for_process.csv file and is read from that for drawin
 The code for the same is written in the file temp_sensor.py
 
 
+As an extension to the project, a Machine Learning model has been trained with the already exsiting data.
+This logistic regression model learns from the data and predicts the output/results from the real-time sensor readings. 
+
