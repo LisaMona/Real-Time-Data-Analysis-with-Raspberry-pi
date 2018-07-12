@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
+#To monitor the real time data and build a logistic regression model.
+
+#importing the required libraries
 from gpiozero import CPUTemperature
 from time import sleep, strftime, time
 import matplotlib.pyplot as plt
 import numpy as np
-from termcolor import colored
 
 cpu = CPUTemperature()
 
@@ -56,11 +57,7 @@ while True:
     x.append(time())
     x = x[-20:]
     y = y[-20:]
-    """if y[-1] > 60:
-        print("Alert")
-        print(y[-1])
-    else:
-        print("OK")"""
+    
     print(y[-1])
     p = classifier.predict(sc.transform(y[-1]))
     if p == 1:
