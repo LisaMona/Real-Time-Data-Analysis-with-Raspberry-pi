@@ -1,3 +1,4 @@
+#importing the reqired libraries
 from gpiozero import CPUTemperature
 from time import sleep, strftime, time
 import matplotlib.pyplot as plt
