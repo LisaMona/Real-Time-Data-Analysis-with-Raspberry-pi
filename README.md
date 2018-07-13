@@ -22,7 +22,7 @@ The code present in Real time Temp monitor.py trains the logistic regression mod
 new data is stored into real_time_data.csv
 
 The latest entry into the file is used as an input to the model and results are predicted.
-
+The temperature is varied by increasing the number of applications.
 An interactive graph as well as an alert message is also notified on the screen for the users.
 
 
