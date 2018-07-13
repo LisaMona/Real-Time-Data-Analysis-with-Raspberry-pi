@@ -31,10 +31,10 @@ while True:
     x.append(time())
     x = x[-20:]
     y = y[-20:]
-    if y[-1] > 60:
+    '''if y[-1] > 60:
         print("Alert")
         print(y[-1])
     else:
-        print("OK")   
+        print("OK")'''
     graph(temp)
    
