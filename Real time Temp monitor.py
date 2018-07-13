@@ -1,4 +1,4 @@
-#To monitor the real time data and build a logistic regression model.
+#To monitor the real time data and build a logistic regression model to predict the results.
 
 #importing the required libraries
 from gpiozero import CPUTemperature
