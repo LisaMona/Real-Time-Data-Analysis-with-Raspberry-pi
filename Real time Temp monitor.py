@@ -5,17 +5,15 @@ from gpiozero import CPUTemperature
 from time import sleep, strftime, time
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 cpu = CPUTemperature()
-
-
-# Logistic Regression
-import pandas as pd
 
 # Importing the dataset
 dataset = pd.read_csv('/home/pi/Documents/Sensor_readings/data_for_process.csv')
 X = dataset.iloc[:, [1]].values
 y = dataset.iloc[:, 2].values
+
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
@@ -32,9 +30,9 @@ classifier = LogisticRegression(random_state = 0)
 classifier.fit(X_train, y_train)
 
 plt.ion()
-x = np.zeros(20)
+x = np.zeros(20)    #initialize the arrays with required number of zeroes.
 y = np.zeros(20)
-x = x.tolist()
+x = x.tolist()  #converting the array to list for further operations.
 y = y.tolist()
 
 # saving to a csv file 
@@ -42,8 +40,7 @@ def write_temp(temp):
     with open("/home/pi/Documents/Sensor_readings/data.csv", "a") as log:
         log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(temp)))
     
-def graph(temp):
-    
+def graph(temp):    
     plt.clf()
     plt.scatter(x,y)
     plt.plot(x,y)
@@ -55,11 +52,11 @@ while True:
     write_temp(temp)
     y.append(temp)
     x.append(time())
-    x = x[-20:]
+    x = x[-20:]             #considering only the last 20 readings for monitoring.
     y = y[-20:]
     
     print(y[-1])
-    p = classifier.predict(sc.transform(y[-1]))
+    p = classifier.predict(sc.transform(y[-1]))     #using the logistic regression model for prediction.
     if p == 1:
         print("ALL IS WELL")
     else:
