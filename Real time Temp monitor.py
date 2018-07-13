@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-cpu = CPUTemperature()
+cpu = CPUTemperature()          
 
 # Importing the dataset
 dataset = pd.read_csv('/home/pi/Documents/Sensor_readings/data_for_process.csv')
